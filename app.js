@@ -26,10 +26,6 @@ app.get("/", (req, res) => {
   res.render("index", { appName });
 });
 
-app.get("/about", (req, res) => {
-  res.render("about", { appName });
-});
-
 //add idea here
 app.get("/ideas/add", (req, res) => {
   res.render("ideas/add", { appName });
