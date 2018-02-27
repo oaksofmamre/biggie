@@ -1,3 +1,5 @@
+"use strict";
+
 const appName = "Biggie";
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -9,6 +11,10 @@ mongoose
   .connect("mongodb://localhost/biggie-dev")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
+
+//load Idea model here
+require("./models/Idea");
+const Idea = mongoose.model("Idea");
 
 //setup handlebars for view template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -22,6 +28,11 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about", { appName });
+});
+
+//add idea here
+app.get("/ideas/add", (req, res) => {
+  res.render("ideas/add", { appName });
 });
 
 const PORT = 3000;

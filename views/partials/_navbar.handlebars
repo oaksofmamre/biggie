@@ -7,8 +7,54 @@
   </div>
   <div class="nav-content center">
     <span class="nav-title">for your big ideas</span>
-    <a class="btn-floating btn-large halfway-fab waves-effect waves-light teal left">
+    <!-- Modal Trigger -->
+    <a class="btn-floating btn-large halfway-fab waves-effect waves-light modal-trigger teal left" href="#modal1">
       <i class="material-icons">add</i>
     </a>
   </div>
+  <!-- Modal Structure -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="blue-text text-darken-2">
+        <h2>Add</h2>
+      </span>
+
+      <div class="row">
+        <form class="col s12" action="/">
+          <div class="row modal-form-row">
+            <div class="input-field col s12">
+              <input id="image_url" type="text" class="validate">
+              <label for="image_url">Image URL</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button class="modal-action modal-close btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+    </div>
+  </div>
+
+
+  {{!--
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>Lorem ipsum dolor sit amet</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat ">Disagree</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div> --}}
 </nav>
