@@ -1,7 +1,14 @@
-const express = require("express");
-const app = express();
-const exphbs = require("express-handlebars");
 const appName = "Biggie";
+const express = require("express");
+const exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
+const app = express();
+
+//connext to database
+mongoose
+  .connect("mongodb://localhost/biggie-dev")
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
 
 //setup handlebars for view template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
