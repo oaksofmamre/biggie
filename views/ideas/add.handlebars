@@ -2,27 +2,37 @@
   <div class="col s12 m7">
     <div class="card hoverable">
       <div class="card-image">
-        <img src="/images/mountains.jpg">
+        <img src="/images/mountains-working3.jpg">
         <span class="card-title">What needs to be captured?</span>
       </div>
       <div class="card-content">
         <form action="/ideas" method="post">
+          {{#each errors}}
+          <div class="card-panel red lighten-5">
+            <span class="red-text text-darken-2">{{text}}</span>
+          </div>
+          {{else}} {{/each}}
           <div class="row">
             <div class="input-field col s6">
-              <input id="topic" type="text">
-              <label for="topic">Topic</label>
+              <input id="topic" type="text" name="topic" class="validation" required oninvalid="this.setCustomValidity('You\'ll need at least a Topic')"
+                oninput="setCustomValidity('')">
+              <label for=" topic ">Topic</label>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="details" class="materialize-textarea"></textarea>
-              <label for="details">Details</label>
+          <div class="row ">
+            <div class="input-field col s12 ">
+              <label for="details " data-error="ERROR " data-success="SUCCESS ">Details</label>
+              <textarea id="details " class="materialize-textarea validation " name="details "></textarea>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="input-field col s12 ">
+              <button class="btn waves-effect waves-light right " type="submit ">Submit
+                <i class="material-icons right ">send</i>
+              </button>
             </div>
           </div>
         </form>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
       </div>
     </div>
   </div>
