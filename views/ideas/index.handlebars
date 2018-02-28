@@ -3,12 +3,17 @@
   {{#each ideas}}
   <div class="col s12 l4">
     <div class="card orange accent-1 hoverable">
-      <div class="card-content brown-darken-4-text">
+      <div class="card-content brown-text text-darken-2">
         <span class="card-title">{{topic}}</span>
         <p>{{details}}</p>
       </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
+      <div class="card-action right-align">
+        <a href="#" class="waves-effect waves-light btn-small">
+          <i class="material-icons orange-text small">edit</i>
+        </a>
+        <a href="#" class="waves-effect waves-light btn-small">
+          <i class="material-icons orange-text text-lighten-2 small">delete</i>
+        </a>
       </div>
     </div>
   </div>
