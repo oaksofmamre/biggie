@@ -25,3 +25,17 @@ nav .nav-title {
   border: 3px solid #fff;
   box-shadow: 0 0 0 3px #b2dfdb;
 }
+
+#biggieBottomNav {
+  margin-bottom: 33px;
+}
+
+#biggieIdeaCreateDate {
+  margin-top: 15px;
+  font-size: 11px;
+}
+
+#biggieIdeaUpdateDate {
+  margin-bottom: -15px;
+  font-size: 11px;
+}

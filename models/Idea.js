@@ -7,7 +7,8 @@ const Schema = mongoose.Schema;
 const IdeaSchema = new Schema({
   topic: { type: String, required: true },
   details: { type: String, required: false },
-  date: { type: Date, default: Date.now }
+  createDate: { type: Date, default: Date.now },
+  updateDate: { type: Date }
 });
 
 mongoose.model("Idea", IdeaSchema);

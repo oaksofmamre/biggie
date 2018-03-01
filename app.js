@@ -4,7 +4,11 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 const app = express();
+
+//setup middleware to use PUT and DELETE http verbs
+app.use(methodOverride("_method"));
 
 //setup bodyParser middleware
 //puts form data in request object, namely req.body
@@ -63,11 +67,34 @@ app.post("/ideas", (req, res) => {
 //ideas index page
 app.get("/ideas", (req, res) => {
   Idea.find({})
-    .sort({ date: "desc" })
+    .sort({ createDate: "desc" })
     .then(result => {
       const ideas = result;
       res.render("ideas/index", { appName, ideas });
     });
+});
+
+//edit Ideas
+app.get("/ideas/edit/:id", (req, res) => {
+  const { id } = req.params;
+  Idea.findOne({ _id: id }).then(result => {
+    const idea = result;
+    res.render("ideas/edit", { idea, appName });
+  });
+});
+
+//update edit Idea submission
+app.put("/ideas/:id", (req, res) => {
+  const { id } = req.params;
+  const { topic, details } = req.body;
+  Idea.findOne({ _id: id }).then(result => {
+    result.topic = topic;
+    result.details = details;
+    result.updateDate = new Date();
+    result.save().then(result => {
+      res.redirect("/ideas");
+    });
+  });
 });
 
 const PORT = 3000;

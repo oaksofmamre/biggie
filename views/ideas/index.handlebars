@@ -1,17 +1,20 @@
-<h1>ideas index</h1>
 <div class="row">
   {{#each ideas}}
-  <div class="col s12 l4">
+  <div class="col s12 m6 l4">
     <div class="card orange accent-1 hoverable">
       <div class="card-content brown-text text-darken-2">
         <span class="card-title">{{topic}}</span>
         <p>{{details}}</p>
+        <p id="biggieIdeaCreateDate" class="orange-text text-darken-1">Created: {{createDate}}</p>
+        {{#if updateDate}}
+        <p id="biggieIdeaUpdateDate" class="orange-text text-darken-1">Updated: {{updateDate}}</p>
+        {{/if}}
       </div>
       <div class="card-action right-align">
-        <a href="#" class="waves-effect waves-light btn-small">
+        <a href="/ideas/edit/{{id}}" class="waves-effect waves-light btn-small">
           <i class="material-icons orange-text small">edit</i>
         </a>
-        <a href="#" class="waves-effect waves-light btn-small">
+        <a href="/ideas/delete/{{id}}" class="waves-effect waves-light btn-small">
           <i class="material-icons orange-text text-lighten-2 small">delete</i>
         </a>
       </div>
