@@ -38,12 +38,12 @@ app.get("/", (req, res) => {
   res.redirect("/ideas");
 });
 
-//form to capture user Idea happens here
+//add form for ideas
 app.get("/ideas/add", (req, res) => {
   res.render("ideas/add", { appName });
 });
 
-//process form submit from add Idea here
+//process 'add form' submission
 app.post("/ideas", (req, res) => {
   let errors = [];
   let { topic, details } = req.body;
@@ -71,10 +71,11 @@ app.get("/ideas", (req, res) => {
     .then(result => {
       const ideas = result;
       res.render("ideas/index", { appName, ideas });
-    });
+    })
+    .catch(err => console.log(err));
 });
 
-//edit Ideas
+//edit form for ideas
 app.get("/ideas/edit/:id", (req, res) => {
   const { id } = req.params;
   Idea.findOne({ _id: id }).then(result => {
@@ -83,17 +84,27 @@ app.get("/ideas/edit/:id", (req, res) => {
   });
 });
 
-//update edit Idea submission
+//process 'edit form' submission
 app.put("/ideas/:id", (req, res) => {
   const { id } = req.params;
   const { topic, details } = req.body;
-  Idea.findOne({ _id: id }).then(result => {
-    result.topic = topic;
-    result.details = details;
-    result.updateDate = new Date();
-    result.save().then(result => {
-      res.redirect("/ideas");
-    });
+  Idea.findOne({ _id: id })
+    .then(result => {
+      result.topic = topic;
+      result.details = details;
+      result.updateDate = new Date();
+      result.save().then(result => {
+        res.redirect("/ideas");
+      });
+    })
+    .catch(err => console.log(err));
+});
+
+//process delete of idea
+app.get("/ideas/delete/:id", (req, res) => {
+  const { id } = req.params;
+  Idea.remove({ _id: id }).then(() => {
+    res.redirect("/ideas");
   });
 });
 
