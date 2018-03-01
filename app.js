@@ -5,6 +5,8 @@ const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
+const moment = require("moment");
+
 const app = express();
 
 //setup middleware to use PUT and DELETE http verbs

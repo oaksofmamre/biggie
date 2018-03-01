@@ -14,7 +14,7 @@
           {{else}} {{/each}}
           <div class="row">
             <div class="input-field col s6">
-              <input id="topic" type="text" name="topic" value="{{idea.topic}}" class="validation" required oninvalid="this.setCustomValidity('You\'ll need at least a Topic')"
+              <input autofocus id="topic" type="text" name="topic" value="{{idea.topic}}" class="validation" required oninvalid="this.setCustomValidity('You\'ll need at least a Topic')"
                 oninput="setCustomValidity('')">
               <label for="topic">Topic</label>
             </div>
