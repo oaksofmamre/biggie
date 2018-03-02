@@ -16,7 +16,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //setup handlebars as the view template engine
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main",
+    helpers: {
+      formatDate: (date, format) => {
+        return moment(date).format(format);
+      },
+      fromDate: date => {
+        let start = moment(date);
+        let end = new Date();
+        return start.from(end);
+      }
+    }
+  })
+);
 app.set("view engine", "handlebars");
 
 app.use(express.static(__dirname + "/public"));

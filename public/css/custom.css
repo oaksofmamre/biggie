@@ -27,7 +27,7 @@ nav .nav-title {
 }
 
 #biggieBottomNav {
-  margin-bottom: 33px;
+  margin-bottom: 31px;
 }
 
 #biggieIdeaCreateDate {
@@ -42,4 +42,9 @@ nav .nav-title {
 
 #biggieStartHere {
   margin-top: 90px;
+}
+
+/* DC, this prevents a super long word (without spaces) from breaking out of its container */
+body {
+  overflow-wrap: break-word;
 }

@@ -2,7 +2,7 @@
   <div class="col s12 m7">
     <div class="card hoverable">
       <div class="card-image">
-        <img src="/images/mountains-working3.jpg">
+        <img src="/images/mountains.jpg">
         <span class="card-title">Clarify your big idea.</span>
       </div>
       <div class="card-content">
@@ -14,7 +14,7 @@
           {{else}} {{/each}}
           <div class="row">
             <div class="input-field col s6">
-              <input autofocus id="topic" type="text" name="topic" value="{{idea.topic}}" class="validation" required oninvalid="this.setCustomValidity('You\'ll need at least a Topic')"
+              <input autofocus id="topic" maxlength="90" type="text" name="topic" value="{{idea.topic}}" class="validation" required oninvalid="this.setCustomValidity('You\'ll need at least a Topic')"
                 oninput="setCustomValidity('')">
               <label for="topic">Topic</label>
             </div>
@@ -22,7 +22,7 @@
           <div class="row">
             <div class="input-field col s12">
               <label for="details">Details</label>
-              <textarea id="details" class="materialize-textarea validation" name="details">{{idea.details}}</textarea>
+              <textarea id="details" maxlength="1120" class="materialize-textarea validation" name="details">{{idea.details}}</textarea>
             </div>
           </div>
           <div class="row">
