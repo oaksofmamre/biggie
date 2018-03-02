@@ -1,5 +1,5 @@
-/*!
- * This is my custom file that overlays Materialize CSS
+/*
+ * This is my custom CSS file that get processed last (after Materialize)
  * DC, 2018-02
  */
 
@@ -44,7 +44,7 @@ nav .nav-title {
   margin-top: 90px;
 }
 
-/* DC, this prevents a super long word (without spaces) from breaking out of its container */
+/* DC, this prevents a super-long word (without spaces) from breaking out of its container */
 body {
   overflow-wrap: break-word;
 }

@@ -1,4 +1,5 @@
 "use strict";
+require("dotenv").config();
 const appName = "Biggie";
 const express = require("express");
 const router = express.Router();
@@ -8,9 +9,11 @@ const mongoose = require("mongoose");
 require("../models/Idea");
 const Idea = mongoose.model("Idea");
 
+const db = require("../config/database");
+
 //connect to database
 mongoose
-  .connect("mongodb://localhost/biggie-dev")
+  .connect(db.mongoURI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 

@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
   res.redirect("/ideas");
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Sever listening on localhost:${PORT}`);
 });
