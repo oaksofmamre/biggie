@@ -1,5 +1,4 @@
 "use strict";
-require("dotenv").config();
 const appName = "Biggie";
 const express = require("express");
 const router = express.Router();
