@@ -23,15 +23,15 @@ app.engine(
     defaultLayout: "main",
     helpers: {
       formatDate: (date, format) => {
-        //use utc() and local() to get correct timestamp no matter where deployed server is
+        //ensure date rendered is that of the browser's local time, not wherever host's server is (heroku)
         return moment
           .utc(date)
           .local()
-          .format(format);
+          .localDate.format(format);
       },
       fromDate: date => {
         let start = moment(date);
-        let end = new Date();
+        let end = moment();
         return start.from(end);
       }
     }
