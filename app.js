@@ -5,7 +5,6 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const moment = require("moment");
-// const mongoose = require("mongoose");
 
 const app = express();
 
@@ -24,7 +23,11 @@ app.engine(
     defaultLayout: "main",
     helpers: {
       formatDate: (date, format) => {
-        return moment(date).format(format);
+        //use utc() and local() to get correct timestamp no matter where deployed server is
+        return moment
+          .utc(date)
+          .local()
+          .format(format);
       },
       fromDate: date => {
         let start = moment(date);
@@ -38,30 +41,21 @@ app.set("view engine", "handlebars");
 
 app.use(express.static(__dirname + "/public"));
 
-//establish database connection
-// app.use((req, res, next) => {
-//   if (mongoose.connection.readyState) {
-//     next();
-//   } else {
-//     require("./mongo")()
-//       .then(() => console.log("MongoDB connected DC!"))
-//       .then(() => next())
-//       .catch(err => console.log(err));
-//   }
-// });
-
+//
 //load routes here
+//
+
 const ideaRoutes = require("./routes/ideaRoutes");
 //anything that goes to /ideas route will use ideaRoutes.js
 app.use("/ideas", ideaRoutes);
 
-//handle undefined routes last
-app.use("*", function(req, res) {
+//the root route
+app.get("/", (req, res) => {
   res.redirect("/ideas");
 });
 
-//the root route
-app.get("/", (req, res) => {
+//handle undefined routes last
+app.use("*", function(req, res) {
   res.redirect("/ideas");
 });
 
@@ -70,17 +64,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on localhost:${PORT}`);
 });
-
-// const PORT = process.env.PORT || 3000;
-// const HOST = "localhost";
-
-// let args;
-// process.env.NODE_ENV === "production" ? (args = [PORT]) : (args = [PORT, HOST]);
-
-// args.push(() => {
-//   console.log(`Server listening on ${HOST}:${PORT}`);
-// });
-
-// app.listen.apply(app, args);
-
-// module.exports = app;
