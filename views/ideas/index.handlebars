@@ -5,7 +5,7 @@
       <div class="card-content brown-text text-darken-2">
         <span class="card-title">{{topic}}</span>
         <p>{{details}}</p>
-        <p id="biggieIdeaCreateDate" class="orange-text text-darken-1"> Created: {{formatDate createDate "llll"}} </p>
+        <p id="biggieIdeaCreateDate" class="orange-text text-darken-1"> Created: {{formatDate createDate "llllZ"}} </p>
         {{#if updateDate}}
         <p id="biggieIdeaUpdateDate" class="orange-text text-darken-1">Last updated: {{fromDate updateDate}}</p>
         {{/if}}
