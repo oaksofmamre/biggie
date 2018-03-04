@@ -25,9 +25,9 @@ app.engine(
       formatDate: (date, format) => {
         //ensure date rendered is that of the browser's local time, not wherever host's server is (heroku)
         return (
-          moment()
-            // .utc(date)
-            .local(date)
+          moment
+            .utc(date)
+            // .local()
             .format(format)
         );
       },
