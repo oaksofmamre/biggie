@@ -24,10 +24,12 @@ app.engine(
     helpers: {
       formatDate: (date, format) => {
         //ensure date rendered is that of the browser's local time, not wherever host's server is (heroku)
-        return moment
-          .utc(date)
-          .local()
-          .localDate.format(format);
+        return (
+          moment
+            // .utc(date)
+            .local(date)
+            .format(format)
+        );
       },
       fromDate: date => {
         let start = moment(date);
