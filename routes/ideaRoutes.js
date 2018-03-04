@@ -3,6 +3,7 @@ const appName = "Biggie";
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const moment = require("moment");
 
 //load Idea model here
 require("../models/Idea");
@@ -70,7 +71,7 @@ router.put("/:id", (req, res) => {
     .then(result => {
       result.topic = topic;
       result.details = details;
-      result.updateDate = new Date();
+      result.updateDate = moment.utc();
       result.save().then(result => {
         res.redirect("/ideas");
       });
