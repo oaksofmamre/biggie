@@ -48,3 +48,8 @@ nav .nav-title {
 body {
   overflow-wrap: break-word;
 }
+
+/* DC, this preserves return carriage on render */
+#biggieDetails {
+  white-space: pre-line;
+}
