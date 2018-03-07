@@ -27,8 +27,8 @@ router.post("/", (req, res) => {
   let errors = [];
   let { topic, details } = req.body;
   if (!topic) {
-    const errorText = "You'll need at least a Topic to get started";
-    errors.push({ errorText });
+    const text = "You'll need at least a Topic to get started";
+    errors.push({ text });
   }
   if (errors.length) {
     res.render("ideas/add", { errors, appName });
