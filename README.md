@@ -12,6 +12,12 @@ Install the dependencies
 $ npm install
 ```
 
+### Test
+
+```sh
+$ npm test
+```
+
 ### Serve
 
 Start the server
