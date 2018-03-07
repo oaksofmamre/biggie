@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon app",
     "start": "node app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000"
   },
   "license": "MIT",
   "dependencies": {
@@ -18,5 +18,10 @@
     "method-override": "^2.3.10",
     "moment": "^2.20.1",
     "mongoose": "^5.0.7"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^5.0.2"
   }
 }
