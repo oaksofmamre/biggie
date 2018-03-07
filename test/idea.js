@@ -10,6 +10,11 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe("Ideas", () => {
+  beforeEach(done => {
+    Idea.remove({ topic: "biggie testing token-POST" }, err => {
+      done();
+    });
+  });
   describe("GET /", () => {
     it("should GET all the ideas with / root route", done => {
       chai
@@ -37,6 +42,28 @@ describe("Ideas", () => {
           res.should.have.status(200);
           done();
         });
+    });
+  });
+  describe("POST /", () => {
+    it("should POST idea", done => {
+      let ideaData = {
+        topic: "biggie testing token-POST",
+        details: "my details"
+      };
+      chai
+        .request(app)
+        .post("/ideas")
+        .send(ideaData)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.not.have.property("errors");
+          done();
+        });
+    });
+    afterEach(done => {
+      Idea.remove({ topic: "biggie testing token-POST" }, err => {
+        done();
+      });
     });
   });
 });
