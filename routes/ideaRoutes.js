@@ -31,6 +31,7 @@ router.post("/", (req, res) => {
     errors.push({ text });
   }
   if (errors.length) {
+    res.status(206);
     res.render("ideas/add", { errors, appName });
   } else {
     const newUser = {

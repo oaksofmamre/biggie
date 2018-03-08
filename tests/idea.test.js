@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 describe("Ideas", () => {
   beforeEach(done => {
-    Idea.remove({ topic: "biggie testing token-POST" }, err => {
+    Idea.remove({}, err => {
       done();
     });
   });
@@ -32,7 +32,7 @@ describe("Ideas", () => {
           done();
         });
     });
-    it("should GET all the ideas with INCORRECT route", done => {
+    it("should GET all the ideas even with INCORRECT route", done => {
       chai
         .request(app)
         .get("/ideas-bad-route")
@@ -54,14 +54,27 @@ describe("Ideas", () => {
         .send(ideaData)
         .end((err, res) => {
           res.should.have.status(200);
-          res.body.should.not.have.property("errors");
           done();
         });
     });
-    afterEach(done => {
-      Idea.remove({ topic: "biggie testing token-POST" }, err => {
-        done();
-      });
+    it("should not POST idea", done => {
+      let ideaData = {
+        topic: "",
+        details: "my details"
+      };
+      chai
+        .request(app)
+        .post("/ideas")
+        .send(ideaData)
+        .end((err, res) => {
+          res.should.have.status(206);
+          done();
+        });
     });
+    // afterEach(done => {
+    //   Idea.remove({}, err => {
+    //     done();
+    //   });
+    // });
   });
 });
