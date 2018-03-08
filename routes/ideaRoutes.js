@@ -37,9 +37,12 @@ router.post("/", (req, res) => {
       topic,
       details
     };
-    new Idea(newUser).save().then(result => {
-      res.redirect("/ideas");
-    });
+    new Idea(newUser)
+      .save()
+      .then(result => {
+        res.redirect("/ideas");
+      })
+      .catch(err => console.log(err));
   }
 });
 
@@ -57,10 +60,12 @@ router.get("/", (req, res) => {
 //edit form for ideas
 router.get("/edit/:id", (req, res) => {
   const { id } = req.params;
-  Idea.findOne({ _id: id }).then(result => {
-    const idea = result;
-    res.render("ideas/edit", { idea, appName });
-  });
+  Idea.findOne({ _id: id })
+    .then(result => {
+      const idea = result;
+      res.render("ideas/edit", { idea, appName });
+    })
+    .catch(err => console.log(err));
 });
 
 //process 'edit form' submission
@@ -82,9 +87,11 @@ router.put("/:id", (req, res) => {
 //process delete of idea
 router.get("/delete/:id", (req, res) => {
   const { id } = req.params;
-  Idea.remove({ _id: id }).then(() => {
-    res.redirect("/ideas");
-  });
+  Idea.remove({ _id: id })
+    .then(() => {
+      res.redirect("/ideas");
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

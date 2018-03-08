@@ -1,11 +1,9 @@
-require("../models/Idea");
-const mongoose = require("mongoose");
-const Idea = mongoose.model("Idea");
-
 const chai = require("chai");
-const chaiHttp = require("chai-http");
-const app = require("../app");
 const should = chai.should();
+const chaiHttp = require("chai-http");
+
+const { app } = require("../app");
+const { Idea } = require("../models/Idea");
 
 chai.use(chaiHttp);
 
